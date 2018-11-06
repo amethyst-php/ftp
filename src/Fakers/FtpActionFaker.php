@@ -19,6 +19,8 @@ class FtpActionFaker extends Faker
         $bag->set('name', $faker->name);
         $bag->set('description', $faker->text);
         $bag->set('ftp', FtpFaker::make()->parameters()->toArray());
+        $bag->set('data_builder', DataBuilderFaker::make()->parameters()->toArray());
+        $bag->set('class_name', \Railken\Amethyst\FtpActions\UploadSingleFileAction::class);
 
         return $bag;
     }

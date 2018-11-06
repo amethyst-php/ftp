@@ -20,6 +20,10 @@ class FtpSchema extends Schema
                 ->setRequired(true)
                 ->setUnique(true),
             Attributes\LongTextAttribute::make('description'),
+            Attributes\TextAttribute::make('host'),
+            Attributes\TextAttribute::make('port'),
+            Attributes\TextAttribute::make('username'),
+            Attributes\TextAttribute::make('password'),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),

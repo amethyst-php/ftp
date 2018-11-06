@@ -29,4 +29,12 @@ class FtpAction extends Model implements EntityContract
     {
         return $this->belongsTo(Ftp::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function data_builder()
+    {
+        return $this->belongsTo(DataBuilder::class);
+    }
 }

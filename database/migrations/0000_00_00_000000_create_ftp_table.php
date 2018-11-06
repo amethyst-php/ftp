@@ -16,6 +16,10 @@ class CreateFtpTable extends Migration
             $table->increments('id');
             $table->string('name')->unique();
             $table->text('description')->nullable();
+            $table->string('host');
+            $table->string('port');
+            $table->string('username');
+            $table->string('password');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -25,8 +29,13 @@ class CreateFtpTable extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
 
+            $table->integer('data_builder_id')->unsigned()->nullable();
+            $table->foreign('data_builder_id')->references('id')->on(Config::get('amethyst.data-builder.data.data-builder.table'));
+
             $table->integer('ftp_id')->unsigned()->nullable();
             $table->foreign('ftp_id')->references('id')->on(Config::get('amethyst.ftp.data.ftp.table'));
+
+            $table->string('class_name');
 
             $table->timestamps();
             $table->softDeletes();

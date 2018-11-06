@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Railken\Amethyst\Common\ConfigurableModel;
 use Railken\Lem\Contracts\EntityContract;
 
+/**
+ * @property string $name
+ * @property string $description
+ * @property string $host
+ * @property string $port
+ * @property string $username
+ * @property string $password
+ */
 class Ftp extends Model implements EntityContract
 {
     use SoftDeletes, ConfigurableModel;
