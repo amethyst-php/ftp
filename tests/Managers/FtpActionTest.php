@@ -92,11 +92,11 @@ class FtpActionTest extends BaseTest
                         'id'          => $fileGenerator->id,
                         'destination' => '{{ "now"|date("d-m-Y") }}/{{ id }}.html',
                     ],
-                    /*[
+                    [
                         'class_name'  => \Railken\Amethyst\FtpResolvers\ExporterResolver::class,
                         'id'          => $exporter->id,
-                        'destination' => '/{{ "now"|date("d-m-Y") }}/{{ id }}.xlsx',
-                    ],*/
+                        'destination' => '{{ "now"|date("d-m-Y") }}/{{ id }}.xlsx',
+                    ],
                 ],
             ])
         )->getResource();

@@ -63,7 +63,7 @@ class UploadSingleFileAction extends BaseAction
 
         $destination = $this->generateAndRender($file->destination, $data);
 
-        if (!file_exists(dirname($destination))) {
+        if(!$client->isDir(dirname($destination))) {
             $client->mkdir(dirname($destination), true);
         }
 
