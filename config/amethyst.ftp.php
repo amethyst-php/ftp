@@ -19,8 +19,20 @@ return [
             'serializer' => Railken\Amethyst\Serializers\FtpSerializer::class,
             'validator'  => Railken\Amethyst\Validators\FtpValidator::class,
             'authorizer' => Railken\Amethyst\Authorizers\FtpAuthorizer::class,
-            'faker'      => Railken\Amethyst\Authorizers\FtpFaker::class,
-            'manager'    => Railken\Amethyst\Authorizers\FtpManager::class,
+            'faker'      => Railken\Amethyst\Fakers\FtpFaker::class,
+            'manager'    => Railken\Amethyst\Managers\FtpManager::class,
+        ],
+        'ftp-action' => [
+            'table'      => 'amethyst_ftp_actions',
+            'comment'    => 'Ftp Actions',
+            'model'      => Railken\Amethyst\Models\FtpAction::class,
+            'schema'     => Railken\Amethyst\Schemas\FtpActionSchema::class,
+            'repository' => Railken\Amethyst\Repositories\FtpActionRepository::class,
+            'serializer' => Railken\Amethyst\Serializers\FtpActionSerializer::class,
+            'validator'  => Railken\Amethyst\Validators\FtpActionValidator::class,
+            'authorizer' => Railken\Amethyst\Authorizers\FtpActionAuthorizer::class,
+            'faker'      => Railken\Amethyst\Fakers\FtpActionFaker::class,
+            'manager'    => Railken\Amethyst\Managers\FtpActionManager::class,
         ],
     ],
 
@@ -34,12 +46,20 @@ return [
     */
     'http' => [
         'admin' => [
-            'my-data' => [
+            'ftp' => [
                 'enabled'     => true,
                 'controller'  => Railken\Amethyst\Http\Controllers\Admin\FtpController::class,
                 'router'      => [
                     'as'        => 'ftp.',
-                    'prefix'    => '/ftps',
+                    'prefix'    => '/ftp',
+                ],
+            ],
+            'ftp-action' => [
+                'enabled'     => true,
+                'controller'  => Railken\Amethyst\Http\Controllers\Admin\FtpActionsController::class,
+                'router'      => [
+                    'as'        => 'ftp-action.',
+                    'prefix'    => '/ftp-actions',
                 ],
             ],
         ],
