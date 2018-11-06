@@ -4,7 +4,7 @@ namespace Railken\Amethyst\Managers;
 
 use Railken\Amethyst\Common\ConfigurableManager;
 use Railken\Lem\Manager;
-use Railken\Amethyst\Managers\DataBuilderManager;
+use Railken\Amethyst\Models\FtpAction;
 
 class FtpActionManager extends Manager
 {
@@ -19,7 +19,7 @@ class FtpActionManager extends Manager
      * Request a exporter.
      *
      * @param FtpAction $ftpAction
-     * @param array    $data
+     * @param array     $data
      *
      * @return \Railken\Lem\Contracts\ResultContract
      */

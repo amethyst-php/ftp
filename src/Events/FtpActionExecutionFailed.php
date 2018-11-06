@@ -18,9 +18,9 @@ class FtpActionExecutionFailed
     /**
      * Create a new event instance.
      *
-     * @param \Railken\Amethyst\Models\FtpAction $ftpAction
-     * @param \Exception                             $exception
-     * @param \Railken\Lem\Contracts\AgentContract   $agent
+     * @param \Railken\Amethyst\Models\FtpAction   $ftpAction
+     * @param \Exception                           $exception
+     * @param \Railken\Lem\Contracts\AgentContract $agent
      */
     public function __construct(FtpAction $ftpAction, Exception $exception, AgentContract $agent = null)
     {

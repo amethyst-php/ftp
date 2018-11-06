@@ -25,6 +25,8 @@ class FtpServiceProvider extends CommonServiceProvider
     {
         parent::register();
         $this->app->register(\Railken\Amethyst\Providers\DataBuilderServiceProvider::class);
+        $this->app->register(\Railken\Amethyst\Providers\ExporterServiceProvider::class);
+        $this->app->register(\Railken\Amethyst\Providers\FileGeneratorServiceProvider::class);
     }
 
     /**

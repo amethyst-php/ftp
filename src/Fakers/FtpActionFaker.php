@@ -20,7 +20,19 @@ class FtpActionFaker extends Faker
         $bag->set('description', $faker->text);
         $bag->set('ftp', FtpFaker::make()->parameters()->toArray());
         $bag->set('data_builder', DataBuilderFaker::make()->parameters()->toArray());
-        $bag->set('class_name', \Railken\Amethyst\FtpActions\UploadSingleFileAction::class);
+        $bag->set('class_name', \Railken\Amethyst\Jobs\FtpActions\UploadSingleFileAction::class);
+        $bag->set('data', [
+            'id' => '{{ resource.id }}',
+        ]);
+        $bag->set('payload', [
+            'files' => [
+                [
+                    'class_name'  => \Railken\Amethyst\FtpResolvers\FileGeneratorResolver::class,
+                    'id'          => 1,
+                    'destination' => '{{ id }}.txt',
+                ],
+            ],
+        ]);
 
         return $bag;
     }

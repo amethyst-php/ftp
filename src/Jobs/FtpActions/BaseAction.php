@@ -1,13 +1,13 @@
 <?php
 
-namespace Railken\Amethyst\FtpActions;
+namespace Railken\Amethyst\Jobs\FtpActions;
 
+use FtpClient\FtpClient;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use FtpClient\FtpClient;
 use Railken\Amethyst\Contracts\FtpActionContract;
 use Railken\Amethyst\Models\Ftp;
 use Railken\Amethyst\Models\FtpAction;
@@ -33,7 +33,7 @@ abstract class BaseAction implements ShouldQueue, FtpActionContract
     protected $agent;
 
     /**
-     * @param \Railken\Amethyst\Models\FtpAction $ftpAction
+     * @param \Railken\Amethyst\Models\FtpAction   $ftpAction
      * @param array                                $data
      * @param \Railken\Lem\Contracts\AgentContract $agent
      */
@@ -51,11 +51,13 @@ abstract class BaseAction implements ShouldQueue, FtpActionContract
      */
     public function newClient()
     {
+        $ftp = $this->ftpAction->ftp;
+
         $client = new FtpClient();
 
-        $client->connect($this->ftp->host, true, intval($this->ftp->port));
-        $client->login($this->ftp->username, $this->ftp->password);
-        $client->pasv();
+        $client->connect($ftp->host, false, intval($ftp->port));
+        $client->login($ftp->username, $ftp->password);
+        $client->pasv(true);
 
         return $client;
     }

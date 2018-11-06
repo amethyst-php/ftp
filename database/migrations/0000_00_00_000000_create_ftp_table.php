@@ -37,6 +37,9 @@ class CreateFtpTable extends Migration
 
             $table->string('class_name');
 
+            $table->text('data')->nullable();
+            $table->text('payload')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });
