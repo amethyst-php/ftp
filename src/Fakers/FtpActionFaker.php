@@ -18,6 +18,7 @@ class FtpActionFaker extends Faker
         $bag = new Bag();
         $bag->set('name', $faker->name);
         $bag->set('description', $faker->text);
+        $bag->set('ftp', FtpFaker::make()->parameters()->toArray());
 
         return $bag;
     }

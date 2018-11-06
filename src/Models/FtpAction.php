@@ -21,4 +21,12 @@ class FtpAction extends Model implements EntityContract
         $this->ini('amethyst.ftp.data.ftp-action');
         parent::__construct($attributes);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function ftp()
+    {
+        return $this->belongsTo(Ftp::class);
+    }
 }

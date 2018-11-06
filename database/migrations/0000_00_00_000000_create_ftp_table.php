@@ -19,6 +19,18 @@ class CreateFtpTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create(Config::get('amethyst.ftp.data.ftp-action.table'), function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->text('description')->nullable();
+
+            $table->integer('ftp_id')->unsigned()->nullable();
+            $table->foreign('ftp_id')->references('id')->on(Config::get('amethyst.ftp.data.ftp.table'));
+
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -27,5 +39,6 @@ class CreateFtpTable extends Migration
     public function down()
     {
         Schema::dropIfExists(Config::get('amethyst.ftp.data.ftp.table'));
+        Schema::dropIfExists(Config::get('amethyst.ftp.data.ftp-action.table'));
     }
 }
