@@ -6,6 +6,7 @@
         "php": ">=7.1",
         "railken/amethyst-common": "0.1.*",
         "railken/amethyst-data-builder": "0.1.*",
+        "railken/amethyst-file-generator": "0.1.*",
         "nicolab/php-ftp-client": "^1.4"
     },
     "require-dev": {
