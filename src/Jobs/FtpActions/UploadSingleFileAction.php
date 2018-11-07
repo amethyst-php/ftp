@@ -3,7 +3,7 @@
 namespace Railken\Amethyst\Jobs\FtpActions;
 
 use Railken\Amethyst\Events;
-use Railken\Amethyst\Managers\DataBuildermanager;
+use Railken\Amethyst\Managers\DataBuilderManager;
 use Railken\Template\Generators;
 use Railken\Amethyst\Models\File;
 
