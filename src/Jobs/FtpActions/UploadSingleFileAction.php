@@ -67,7 +67,7 @@ class UploadSingleFileAction extends BaseAction
             $client->mkdir(dirname($destination), true);
         }
 
-        $client->put($destination, $this->downloadFile($resolver->resolve($file, $data)), FTP_ASCII);
+        $client->put($destination, $this->downloadFile($resolver->resolve($file, $data)), FTP_BINARY);
     }
 
     /**
