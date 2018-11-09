@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Events\FtpAction;
+namespace Railken\Amethyst\Events;
 
 use Exception;
 use Illuminate\Queue\SerializesModels;
