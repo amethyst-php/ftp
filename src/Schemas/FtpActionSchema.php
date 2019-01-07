@@ -30,8 +30,8 @@ class FtpActionSchema extends Schema
                 ->setRelationName('data_builder')
                 ->setRelationManager(DataBuilderManager::class),
             Attributes\ClassNameAttribute::make('class_name', [FtpActionContract::class]),
-            Attributes\ObjectAttribute::make('data'),
-            Attributes\ObjectAttribute::make('payload'),
+            Attributes\YamlAttribute::make('data'),
+            Attributes\YamlAttribute::make('payload'),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),

@@ -17,6 +17,8 @@ class CreateFtpTable extends Migration
             $table->string('name')->unique();
             $table->text('description')->nullable();
             $table->string('host');
+            $table->boolean('ssl')->default(false);
+            $table->boolean('passive')->default(true);
             $table->string('port');
             $table->string('username');
             $table->string('password');

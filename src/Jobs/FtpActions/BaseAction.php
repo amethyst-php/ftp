@@ -55,9 +55,12 @@ abstract class BaseAction implements ShouldQueue, FtpActionContract
 
         $client = new FtpClient();
 
-        $client->connect($ftp->host, false, intval($ftp->port));
+        $client->connect($ftp->host, (bool) $ftp->ssl, intval($ftp->port));
         $client->login($ftp->username, $ftp->password);
-        $client->pasv(true);
+
+        if ($ftp->passive) {
+            $client->pasv(true);
+        }
 
         return $client;
     }

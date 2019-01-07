@@ -4,18 +4,17 @@ namespace Railken\Amethyst\Jobs\FtpActions;
 
 use Railken\Amethyst\Events;
 use Railken\Amethyst\Managers\DataBuilderManager;
-use Railken\Template\Generators;
 use Railken\Amethyst\Models\File;
+use Railken\Template\Generators;
+use Symfony\Component\Yaml\Yaml;
 
 class UploadSingleFileAction extends BaseAction
-{   
+{
     /**
-     * Handle Action
+     * Handle Action.
      */
     public function handle()
     {
-        $client = $this->newClient();
-
         $dbm = new DataBuilderManager();
 
         $result = $dbm->build($this->ftpAction->data_builder, $this->data);
@@ -28,53 +27,57 @@ class UploadSingleFileAction extends BaseAction
 
         $data = array_merge(
             $this->data,
-            $data, 
-            (array) json_decode(
+            $data,
+            Yaml::parse(
                 $this->generateAndRender(
-                    (string) json_encode($this->ftpAction->data), $data
+                    $this->ftpAction->data, $data
                 )
             )
         );
 
-        foreach ($this->ftpAction->payload->files as $file) {
+        $payload = json_decode(json_encode(Yaml::parse($this->ftpAction->payload)));
 
-            $this->handleFile($client, $file, $data);
+        foreach ($payload->files as $file) {
+            $this->handleFile($file, $data);
         }
 
         event(new Events\FtpActionExecuted($this->ftpAction, $this->agent));
     }
 
     /**
-     * Handle single file
+     * Handle single file.
      *
-     * @param mixed $client
      * @param object $file
-     * @param array $data
+     * @param array  $data
      */
-    public function handleFile($client, $file, array $data)
+    public function handleFile($file, array $data)
     {
         $resolver = $file->class_name;
 
         if (!class_exists($resolver)) {
-            throw new \Exception(sprintf("Undefined class %s", $resolver));
+            throw new \Exception(sprintf('Undefined class %s', $resolver));
         }
 
-        $resolver = new $resolver;
+        $resolver = new $resolver();
 
         $destination = $this->generateAndRender($file->destination, $data);
+        $source = $this->downloadFile($resolver->resolve($file, $data));
 
-        if(!$client->isDir(dirname($destination))) {
+        $client = $this->newClient();
+
+        if (!$client->isDir(dirname($destination))) {
             $client->mkdir(dirname($destination), true);
         }
 
-        $client->put($destination, $this->downloadFile($resolver->resolve($file, $data)), FTP_BINARY);
+        $client->put($destination, $source, FTP_BINARY);
+        $client->close();
     }
 
     /**
-     * Generate and render
+     * Generate and render.
      *
      * @param string $content
-     * @param array $data
+     * @param array  $data
      *
      * @return string
      */
@@ -86,7 +89,7 @@ class UploadSingleFileAction extends BaseAction
     }
 
     /**
-     * Download the file in a temporary directory
+     * Download the file in a temporary directory.
      *
      * @param File $file
      *
@@ -95,7 +98,6 @@ class UploadSingleFileAction extends BaseAction
     public function downloadFile(File $file): string
     {
         $tmpFile = tempnam(sys_get_temp_dir(), 'Tux');
-
 
         $url = $file->media[0]->disk === 's3' ? $file->media[0]->getTemporaryUrl(new \DateTime('+1 hour')) : $file->media[0]->getPath();
 

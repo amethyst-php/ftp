@@ -6,15 +6,16 @@ use Railken\Amethyst\Fakers\DataBuilderFaker;
 use Railken\Amethyst\Fakers\ExporterFaker;
 use Railken\Amethyst\Fakers\FileGeneratorFaker;
 use Railken\Amethyst\Fakers\FtpActionFaker;
+use Railken\Amethyst\Fakers\UserFaker;
 use Railken\Amethyst\Managers\DataBuilderManager;
 use Railken\Amethyst\Managers\ExporterManager;
 use Railken\Amethyst\Managers\FileGeneratorManager;
 use Railken\Amethyst\Managers\FtpActionManager;
+use Railken\Amethyst\Managers\UserManager;
 use Railken\Amethyst\Tests\BaseTest;
 use Railken\Amethyst\Tests\DataBuilders\UserDataBuilder;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
-use Railken\Amethyst\Fakers\UserFaker;
-use Railken\Amethyst\Managers\UserManager;
+use Symfony\Component\Yaml\Yaml;
 
 class FtpActionTest extends BaseTest
 {
@@ -46,12 +47,12 @@ class FtpActionTest extends BaseTest
             DataBuilderFaker::make()->parameters()
                 ->set('class_name', UserDataBuilder::class)
                 ->set('filter', 'id eq {{ id }}')
-                ->set('data', [
+                ->set('data', Yaml::dump([
                     'id' => [
                         'type'       => 'int',
                         'validation' => 'integer',
                     ],
-                ])
+                ]))
         )->getResource();
 
         $fgm = new FileGeneratorManager();
@@ -69,9 +70,9 @@ class FtpActionTest extends BaseTest
         $exporter = $em->createOrFail(
             ExporterFaker::make()->parameters()
                 ->remove('data_builder')->set('data_builder_id', $dataBuilder->id)
-                ->set('body', [
+                ->set('body', Yaml::dump([
                     'id' => '{{ user.id }}',
-                ])
+                ]))
                 ->set('class_name', \Railken\Amethyst\Jobs\GenerateExportXls::class)
         )->getResource();
 
@@ -79,26 +80,28 @@ class FtpActionTest extends BaseTest
             $this->faker::make()->parameters()
             ->set('ftp.host', env('TEST_FTP_HOST', '127.0.0.1'))
             ->set('ftp.port', env('TEST_FTP_PORT', '21'))
+            ->set('ftp.ssl', env('TEST_FTP_SSL', false))
             ->set('ftp.username', env('TEST_FTP_USERNAME', 'test'))
             ->set('ftp.password', env('TEST_FTP_PASSWORD', 'test'))
-            ->set('data', [
-                'id' => '{{ users[0].id }}'
-            ])
+            ->set('ftp.passive', env('TEST_FTP_PASSIVE', true))
+            ->set('data', Yaml::dump([
+                'id' => '{{ users[0].id }}',
+            ]))
             ->remove('data_builder')->set('data_builder_id', $dataBuilder->id)
-            ->set('payload', [
+            ->set('payload', Yaml::dump([
                 'files' => [
                     [
                         'class_name'  => \Railken\Amethyst\FtpResolvers\FileGeneratorResolver::class,
                         'id'          => $fileGenerator->id,
-                        'destination' => '{{ "now"|date("d-m-Y") }}/{{ id }}.html',
+                        'destination' => 'upload/{{ "now"|date("d-m-Y") }}.html',
                     ],
                     [
                         'class_name'  => \Railken\Amethyst\FtpResolvers\ExporterResolver::class,
                         'id'          => $exporter->id,
-                        'destination' => '{{ "now"|date("d-m-Y") }}/{{ id }}.xlsx',
+                        'destination' => 'upload/{{ "now"|date("d-m-Y") }}.xlsx',
                     ],
                 ],
-            ])
+            ]))
         )->getResource();
 
         $this->getManager()->execute($ftpAction, ['id' => '1']);

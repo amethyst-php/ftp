@@ -3,8 +3,8 @@
 namespace Railken\Amethyst\Managers;
 
 use Railken\Amethyst\Common\ConfigurableManager;
-use Railken\Lem\Manager;
 use Railken\Amethyst\Models\FtpAction;
+use Railken\Lem\Manager;
 
 class FtpActionManager extends Manager
 {

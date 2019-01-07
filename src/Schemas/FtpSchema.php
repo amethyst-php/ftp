@@ -21,6 +21,8 @@ class FtpSchema extends Schema
                 ->setUnique(true),
             Attributes\LongTextAttribute::make('description'),
             Attributes\TextAttribute::make('host'),
+            Attributes\BooleanAttribute::make('ssl'),
+            Attributes\BooleanAttribute::make('passive'),
             Attributes\TextAttribute::make('port'),
             Attributes\TextAttribute::make('username'),
             Attributes\TextAttribute::make('password'),

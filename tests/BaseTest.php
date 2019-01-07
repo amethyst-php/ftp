@@ -16,7 +16,7 @@ abstract class BaseTest extends \Orchestra\Testbench\TestCase
 
         parent::setUp();
         File::cleanDirectory(database_path('migrations/'));
-        
+
         $this->artisan('vendor:publish', [
             '--provider' => 'Spatie\MediaLibrary\MediaLibraryServiceProvider',
         ]);

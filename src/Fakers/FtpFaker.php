@@ -19,6 +19,8 @@ class FtpFaker extends Faker
         $bag->set('name', $faker->name);
         $bag->set('description', $faker->text);
         $bag->set('host', '127.0.0.1');
+        $bag->set('ssl', false);
+        $bag->set('passive', true);
         $bag->set('port', '21');
         $bag->set('username', 'root');
         $bag->set('password', 'root');
