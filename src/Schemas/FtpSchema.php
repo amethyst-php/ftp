@@ -20,12 +20,16 @@ class FtpSchema extends Schema
                 ->setRequired(true)
                 ->setUnique(true),
             Attributes\LongTextAttribute::make('description'),
-            Attributes\TextAttribute::make('host'),
+            Attributes\TextAttribute::make('host')
+                ->setRequired(true),
             Attributes\BooleanAttribute::make('ssl'),
             Attributes\BooleanAttribute::make('passive'),
-            Attributes\TextAttribute::make('port'),
-            Attributes\TextAttribute::make('username'),
-            Attributes\TextAttribute::make('password'),
+            Attributes\TextAttribute::make('port')
+                ->setRequired(true),
+            Attributes\TextAttribute::make('username')
+                ->setRequired(true),
+            Attributes\TextAttribute::make('password')
+                ->setRequired(true),
             Attributes\CreatedAtAttribute::make(),
             Attributes\UpdatedAtAttribute::make(),
             Attributes\DeletedAtAttribute::make(),

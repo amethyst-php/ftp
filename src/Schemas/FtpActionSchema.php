@@ -25,11 +25,14 @@ class FtpActionSchema extends Schema
             Attributes\LongTextAttribute::make('description'),
             Attributes\BelongsToAttribute::make('ftp_id')
                 ->setRelationName('ftp')
-                ->setRelationManager(FtpManager::class),
+                ->setRelationManager(FtpManager::class)
+                ->setRequired(true),
             Attributes\BelongsToAttribute::make('data_builder_id')
                 ->setRelationName('data_builder')
-                ->setRelationManager(DataBuilderManager::class),
-            Attributes\ClassNameAttribute::make('class_name', [FtpActionContract::class]),
+                ->setRelationManager(DataBuilderManager::class)
+                ->setRequired(true),
+            Attributes\ClassNameAttribute::make('class_name', [FtpActionContract::class])
+                ->setRequired(true),
             Attributes\YamlAttribute::make('data'),
             Attributes\YamlAttribute::make('payload'),
             Attributes\CreatedAtAttribute::make(),
