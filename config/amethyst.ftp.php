@@ -47,19 +47,19 @@ return [
     'http' => [
         'admin' => [
             'ftp' => [
-                'enabled'     => true,
-                'controller'  => Railken\Amethyst\Http\Controllers\Admin\FtpController::class,
-                'router'      => [
-                    'as'        => 'ftp.',
-                    'prefix'    => '/ftp',
+                'enabled'    => true,
+                'controller' => Railken\Amethyst\Http\Controllers\Admin\FtpController::class,
+                'router'     => [
+                    'as'     => 'ftp.',
+                    'prefix' => '/ftp',
                 ],
             ],
             'ftp-action' => [
-                'enabled'     => true,
-                'controller'  => Railken\Amethyst\Http\Controllers\Admin\FtpActionsController::class,
-                'router'      => [
-                    'as'        => 'ftp-action.',
-                    'prefix'    => '/ftp-actions',
+                'enabled'    => true,
+                'controller' => Railken\Amethyst\Http\Controllers\Admin\FtpActionsController::class,
+                'router'     => [
+                    'as'     => 'ftp-action.',
+                    'prefix' => '/ftp-actions',
                 ],
             ],
         ],
