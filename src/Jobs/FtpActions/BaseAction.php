@@ -15,7 +15,10 @@ use Railken\Lem\Contracts\AgentContract;
 
 abstract class BaseAction implements ShouldQueue, FtpActionContract
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * @var \Railken\Amethyst\Models\FtpAction
