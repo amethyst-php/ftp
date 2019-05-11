@@ -28,7 +28,7 @@ class FtpAction extends Model implements EntityContract
      */
     public function ftp(): BelongsTo
     {
-        return $this->belongsTo(Ftp::class);
+        return $this->belongsTo(config('amethyst.ftp.data.ftp.model'));
     }
 
     /**
@@ -36,6 +36,6 @@ class FtpAction extends Model implements EntityContract
      */
     public function data_builder(): BelongsTo
     {
-        return $this->belongsTo(DataBuilder::class);
+        return $this->belongsTo(config('amethyst.data-builder.data.data-builder.model'));
     }
 }
