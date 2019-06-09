@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'name' => 'FtpAction',
-    'description' => 'FtpAction',
+    'name' => 'Ftp Action',
+    'description' => 'Ftp Action',
     'attributes' => []
 ];
