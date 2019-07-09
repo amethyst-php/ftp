@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\Jobs\FtpActions;
+namespace Amethyst\Jobs\FtpActions;
 
 use FtpClient\FtpClient;
 use Illuminate\Bus\Queueable;
@@ -8,9 +8,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Railken\Amethyst\Contracts\FtpActionContract;
-use Railken\Amethyst\Models\Ftp;
-use Railken\Amethyst\Models\FtpAction;
+use Amethyst\Contracts\FtpActionContract;
+use Amethyst\Models\Ftp;
+use Amethyst\Models\FtpAction;
 use Railken\Lem\Contracts\AgentContract;
 
 abstract class BaseAction implements ShouldQueue, FtpActionContract
@@ -21,7 +21,7 @@ abstract class BaseAction implements ShouldQueue, FtpActionContract
     use SerializesModels;
 
     /**
-     * @var \Railken\Amethyst\Models\FtpAction
+     * @var \Amethyst\Models\FtpAction
      */
     protected $ftpAction;
 
@@ -36,7 +36,7 @@ abstract class BaseAction implements ShouldQueue, FtpActionContract
     protected $agent;
 
     /**
-     * @param \Railken\Amethyst\Models\FtpAction   $ftpAction
+     * @param \Amethyst\Models\FtpAction   $ftpAction
      * @param array                                $data
      * @param \Railken\Lem\Contracts\AgentContract $agent
      */

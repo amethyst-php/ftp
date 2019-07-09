@@ -1,6 +1,6 @@
 <?php
 
-namespace Railken\Amethyst\FtpResolvers;
+namespace Amethyst\FtpResolvers;
 
 class BaseResolver
 {

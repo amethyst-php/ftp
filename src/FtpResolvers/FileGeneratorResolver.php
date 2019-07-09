@@ -1,14 +1,14 @@
 <?php
 
-namespace Railken\Amethyst\FtpResolvers;
+namespace Amethyst\FtpResolvers;
 
-use Railken\Amethyst\Managers\FileGeneratorManager;
-use Railken\Amethyst\Models\File;
+use Amethyst\Managers\FileGeneratorManager;
+use Amethyst\Models\File;
 
 class FileGeneratorResolver extends BaseResolver
 {
     /**
-     * @var \Railken\Amethyst\Managers\FileGeneratorManager
+     * @var \Amethyst\Managers\FileGeneratorManager
      */
     protected $manager;
 
@@ -32,7 +32,7 @@ class FileGeneratorResolver extends BaseResolver
     {
         $fileGenerator = $this->manager->getRepository()->findOneById($file->id);
 
-        $job = new \Railken\Amethyst\Jobs\FileGenerator\GenerateFile($fileGenerator, $data);
+        $job = new \Amethyst\Jobs\FileGenerator\GenerateFile($fileGenerator, $data);
         $result = $job->generate();
 
         if (!$result->ok()) {

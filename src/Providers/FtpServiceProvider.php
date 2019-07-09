@@ -1,11 +1,11 @@
 <?php
 
-namespace Railken\Amethyst\Providers;
+namespace Amethyst\Providers;
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
-use Railken\Amethyst\Api\Support\Router;
-use Railken\Amethyst\Common\CommonServiceProvider;
+use Amethyst\Api\Support\Router;
+use Amethyst\Common\CommonServiceProvider;
 
 class FtpServiceProvider extends CommonServiceProvider
 {
@@ -24,9 +24,9 @@ class FtpServiceProvider extends CommonServiceProvider
     public function register()
     {
         parent::register();
-        $this->app->register(\Railken\Amethyst\Providers\DataBuilderServiceProvider::class);
-        $this->app->register(\Railken\Amethyst\Providers\ExporterServiceProvider::class);
-        $this->app->register(\Railken\Amethyst\Providers\FileGeneratorServiceProvider::class);
+        $this->app->register(\Amethyst\Providers\DataBuilderServiceProvider::class);
+        $this->app->register(\Amethyst\Providers\ExporterServiceProvider::class);
+        $this->app->register(\Amethyst\Providers\FileGeneratorServiceProvider::class);
     }
 
     /**

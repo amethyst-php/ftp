@@ -1,14 +1,14 @@
 <?php
 
-namespace Railken\Amethyst\FtpResolvers;
+namespace Amethyst\FtpResolvers;
 
-use Railken\Amethyst\Managers\ExporterManager;
-use Railken\Amethyst\Models\File;
+use Amethyst\Managers\ExporterManager;
+use Amethyst\Models\File;
 
 class ExporterResolver extends BaseResolver
 {
     /**
-     * @var \Railken\Amethyst\Managers\FileGeneratorManager
+     * @var \Amethyst\Managers\FileGeneratorManager
      */
     protected $manager;
 

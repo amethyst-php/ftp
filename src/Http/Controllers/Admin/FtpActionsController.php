@@ -1,11 +1,11 @@
 <?php
 
-namespace Railken\Amethyst\Http\Controllers\Admin;
+namespace Amethyst\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Railken\Amethyst\Api\Http\Controllers\RestManagerController;
-use Railken\Amethyst\Api\Http\Controllers\Traits as RestTraits;
-use Railken\Amethyst\Managers\FtpActionManager;
+use Amethyst\Api\Http\Controllers\RestManagerController;
+use Amethyst\Api\Http\Controllers\Traits as RestTraits;
+use Amethyst\Managers\FtpActionManager;
 
 class FtpActionsController extends RestManagerController
 {
@@ -32,10 +32,10 @@ class FtpActionsController extends RestManagerController
      */
     public function execute(int $id, Request $request)
     {
-        /** @var \Railken\Amethyst\Managers\FtpActionManager */
+        /** @var \Amethyst\Managers\FtpActionManager */
         $manager = $this->manager;
 
-        /** @var \Railken\Amethyst\Models\FtpAction */
+        /** @var \Amethyst\Models\FtpAction */
         $exporter = $manager->getRepository()->findOneById($id);
 
         if ($exporter == null) {

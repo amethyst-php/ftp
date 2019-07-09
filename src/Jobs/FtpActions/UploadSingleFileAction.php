@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Jobs\FtpActions;
+namespace Amethyst\Jobs\FtpActions;
 
-use Railken\Amethyst\Events;
-use Railken\Amethyst\Managers\DataBuilderManager;
-use Railken\Amethyst\Models\File;
+use Amethyst\Events;
+use Amethyst\Managers\DataBuilderManager;
+use Amethyst\Models\File;
 use Railken\Template\Generators;
 use Symfony\Component\Yaml\Yaml;
 

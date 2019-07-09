@@ -1,34 +1,34 @@
 {
-    "name": "railken/amethyst-ftp",
+    "name": "amethyst/ftp",
     "keywords": ["laravel", "amethyst", "amethyst-ftp", "ftp"],
     "license": "MIT",
     "require": {
         "php": ">=7.1",
-        "railken/amethyst-common": "0.1.*",
-        "railken/amethyst-data-builder": "0.1.*",
-        "railken/amethyst-file-generator": "0.1.*",
-        "railken/amethyst-exporter": "0.1.*",
+        "amethyst/common": "0.1.*",
+        "amethyst/data-builder": "0.1.*",
+        "amethyst/file-generator": "0.1.*",
+        "amethyst/exporter": "0.1.*",
         "nicolab/php-ftp-client": "^1.4"
     },
     "require-dev": {
         "phpunit/phpunit": "~7.1",
         "orchestra/testbench": "3.*",
-        "railken/amethyst-user": "0.1.*"
+        "amethyst/user": "0.1.*"
     },
     "autoload": {
         "psr-4" : {
-            "Railken\\Amethyst\\" : "src/"
+            "Amethyst\\" : "src/"
         }
     },
     "autoload-dev": {
         "psr-4": { 
-            "Railken\\Amethyst\\Tests\\": "tests/" 
+            "Amethyst\\Tests\\": "tests/" 
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Railken\\Amethyst\\Providers\\FtpServiceProvider"
+                "Amethyst\\Providers\\FtpServiceProvider"
             ]
         }
     }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Railken\Amethyst\Managers;
+namespace Amethyst\Managers;
 
-use Railken\Amethyst\Common\ConfigurableManager;
-use Railken\Amethyst\Models\FtpAction;
+use Amethyst\Common\ConfigurableManager;
+use Amethyst\Models\FtpAction;
 use Railken\Lem\Manager;
 
 class FtpActionManager extends Manager

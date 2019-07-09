@@ -1,10 +1,10 @@
 <?php
 
-namespace Railken\Amethyst\Schemas;
+namespace Amethyst\Schemas;
 
-use Railken\Amethyst\Contracts\FtpActionContract;
-use Railken\Amethyst\Managers\DataBuilderManager;
-use Railken\Amethyst\Managers\FtpManager;
+use Amethyst\Contracts\FtpActionContract;
+use Amethyst\Managers\DataBuilderManager;
+use Amethyst\Managers\FtpManager;
 use Railken\Lem\Attributes;
 use Railken\Lem\Schema;
 

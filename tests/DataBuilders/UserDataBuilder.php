@@ -1,12 +1,12 @@
 <?php
 
-namespace Railken\Amethyst\Tests\DataBuilders;
+namespace Amethyst\Tests\DataBuilders;
 
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Railken\Amethyst\Contracts\DataBuilderContract;
-use Railken\Amethyst\Managers\UserManager;
+use Amethyst\Contracts\DataBuilderContract;
+use Amethyst\Managers\UserManager;
 
 class UserDataBuilder implements DataBuilderContract
 {

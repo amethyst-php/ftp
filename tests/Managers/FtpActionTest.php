@@ -1,19 +1,19 @@
 <?php
 
-namespace Railken\Amethyst\Tests\Managers;
+namespace Amethyst\Tests\Managers;
 
-use Railken\Amethyst\Fakers\DataBuilderFaker;
-use Railken\Amethyst\Fakers\ExporterFaker;
-use Railken\Amethyst\Fakers\FileGeneratorFaker;
-use Railken\Amethyst\Fakers\FtpActionFaker;
-use Railken\Amethyst\Fakers\UserFaker;
-use Railken\Amethyst\Managers\DataBuilderManager;
-use Railken\Amethyst\Managers\ExporterManager;
-use Railken\Amethyst\Managers\FileGeneratorManager;
-use Railken\Amethyst\Managers\FtpActionManager;
-use Railken\Amethyst\Managers\UserManager;
-use Railken\Amethyst\Tests\BaseTest;
-use Railken\Amethyst\Tests\DataBuilders\UserDataBuilder;
+use Amethyst\Fakers\DataBuilderFaker;
+use Amethyst\Fakers\ExporterFaker;
+use Amethyst\Fakers\FileGeneratorFaker;
+use Amethyst\Fakers\FtpActionFaker;
+use Amethyst\Fakers\UserFaker;
+use Amethyst\Managers\DataBuilderManager;
+use Amethyst\Managers\ExporterManager;
+use Amethyst\Managers\FileGeneratorManager;
+use Amethyst\Managers\FtpActionManager;
+use Amethyst\Managers\UserManager;
+use Amethyst\Tests\BaseTest;
+use Amethyst\Tests\DataBuilders\UserDataBuilder;
 use Railken\Lem\Support\Testing\TestableBaseTrait;
 use Symfony\Component\Yaml\Yaml;
 
@@ -73,7 +73,7 @@ class FtpActionTest extends BaseTest
                 ->set('body', Yaml::dump([
                     'id' => '{{ user.id }}',
                 ]))
-                ->set('class_name', \Railken\Amethyst\Jobs\GenerateExportXls::class)
+                ->set('class_name', \Amethyst\Jobs\GenerateExportXls::class)
         )->getResource();
 
         $ftpAction = $this->getManager()->createOrFail(
@@ -91,12 +91,12 @@ class FtpActionTest extends BaseTest
             ->set('payload', Yaml::dump([
                 'files' => [
                     [
-                        'class_name'  => \Railken\Amethyst\FtpResolvers\FileGeneratorResolver::class,
+                        'class_name'  => \Amethyst\FtpResolvers\FileGeneratorResolver::class,
                         'id'          => $fileGenerator->id,
                         'destination' => 'upload/{{ "now"|date("d-m-Y") }}.html',
                     ],
                     [
-                        'class_name'  => \Railken\Amethyst\FtpResolvers\ExporterResolver::class,
+                        'class_name'  => \Amethyst\FtpResolvers\ExporterResolver::class,
                         'id'          => $exporter->id,
                         'destination' => 'upload/{{ "now"|date("d-m-Y") }}.xlsx',
                     ],
