@@ -2,11 +2,11 @@
 
 namespace Amethyst\Tests\DataBuilders;
 
+use Amethyst\Contracts\DataBuilderContract;
+use Amethyst\Managers\UserManager;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Amethyst\Contracts\DataBuilderContract;
-use Amethyst\Managers\UserManager;
 
 class UserDataBuilder implements DataBuilderContract
 {

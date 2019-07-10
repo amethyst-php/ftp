@@ -2,9 +2,9 @@
 
 namespace Amethyst\Events;
 
+use Amethyst\Models\FtpAction;
 use Exception;
 use Illuminate\Queue\SerializesModels;
-use Amethyst\Models\FtpAction;
 use Railken\Lem\Contracts\AgentContract;
 
 class FtpActionExecutionFailed
@@ -18,7 +18,7 @@ class FtpActionExecutionFailed
     /**
      * Create a new event instance.
      *
-     * @param \Amethyst\Models\FtpAction   $ftpAction
+     * @param \Amethyst\Models\FtpAction           $ftpAction
      * @param \Exception                           $exception
      * @param \Railken\Lem\Contracts\AgentContract $agent
      */
