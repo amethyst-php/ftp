@@ -6,6 +6,14 @@ use Amethyst\Common\ConfigurableManager;
 use Amethyst\Models\FtpAction;
 use Railken\Lem\Manager;
 
+/**
+ * @method \Amethyst\Models\FtpAction newEntity()
+ * @method \Amethyst\Schemas\FtpActionSchema getSchema()
+ * @method \Amethyst\Repositories\FtpActionRepository getRepository()
+ * @method \Amethyst\Serializers\FtpActionSerializer getSerializer()
+ * @method \Amethyst\Validators\FtpActionValidator getValidator()
+ * @method \Amethyst\Authorizers\FtpActionAuthorizer getAuthorizer()
+ */
 class FtpActionManager extends Manager
 {
     use ConfigurableManager;
