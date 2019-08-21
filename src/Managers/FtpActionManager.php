@@ -27,7 +27,7 @@ class FtpActionManager extends Manager
      * Request a exporter.
      *
      * @param FtpAction|int $ftpAction
-     * @param array     $data
+     * @param array         $data
      *
      * @return \Railken\Lem\Contracts\ResultContract
      */
