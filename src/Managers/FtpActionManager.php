@@ -31,9 +31,13 @@ class FtpActionManager extends Manager
      *
      * @return \Railken\Lem\Contracts\ResultContract
      */
-    public function execute($ftpAction, array $data = [])
+    public function execute($ftpAction, $data = [])
     {
-        $ftpAction = is_int($ftpAction) ? $this->getRepository()->findOneById($ftpAction) : $ftpAction;
+        $data = is_object($data) ? (array) $data : $data;
+   
+        if (!($ftpAction instanceof FtpAction)) {
+            $ftpAction = $this->getRepository()->findOneById($ftpAction);
+        }
 
         $result = (new DataBuilderManager())->validateRaw($ftpAction->data_builder, $data);
 
