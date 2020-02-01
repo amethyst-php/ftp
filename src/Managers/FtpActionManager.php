@@ -34,7 +34,7 @@ class FtpActionManager extends Manager
     public function execute($ftpAction, $data = [])
     {
         $data = is_object($data) ? (array) $data : $data;
-   
+
         if (!($ftpAction instanceof FtpAction)) {
             $ftpAction = $this->getRepository()->findOneById($ftpAction);
         }
